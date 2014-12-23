@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lang>
+	<item name="cmd_ajaxboard_comment_alert">
+		<value xml:lang="ko"><![CDATA[새로운 댓글이 있습니다. 클릭하면 새로운 댓글을 불러옵니다.]]></value>
+	</item>
+</lang>

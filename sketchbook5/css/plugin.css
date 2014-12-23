@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/*! Copyright (C) 2014 AJAXBOARD. All rights reserved. */
+
+#cmt_alert {
+	display: none;
+	margin: 10px 0 20px;
+	padding: 15px;
+	border: 1px solid #E3E3E3;
+	color: #888888;
+	background-color: #F3F3F3;
+	text-align: center;
+	cursor: pointer;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* End of file */

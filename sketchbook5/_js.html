@@ -1,0 +1,16 @@
+<!--// HEADER -->
+{@
+	$show_message = $plugin_info->extra_vars['show_message']->value;
+	$slide_duration = $plugin_info->extra_vars['slide_duration']->value;
+}
+<!--@if(!$slide_duration)-->
+	{@$slide_duration = 1000}
+<!--@end-->
+<script>
+//<![CDATA[
+<!--@if($show_message)-->
+var show_waiting_message = {$show_message};
+<!--@end-->
+var SLIDE_DURATION = {$slide_duration};
+//]]>
+</script>
