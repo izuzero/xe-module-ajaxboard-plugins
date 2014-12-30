@@ -86,8 +86,8 @@
 				}
 			};
 			global.doCallModuleAction = function (module, action, target_srl) {
-				var isAction =["procDocumentVoteUp", "procDocumentVoteDown", "procDocumentDeclare", "procCommentVoteUp", "procCommentVoteDown", "procCommentDeclare"];
-				if ($.inArray(action, isAction)) {
+				var isAction = ["procDocumentVoteUp", "procDocumentVoteDown", "procDocumentDeclare", "procCommentVoteUp", "procCommentVoteDown", "procCommentDeclare"];
+				if ($.inArray(action, isAction) > -1) {
 					var params = {
 						target_srl: target_srl,
 						cur_mid: core.current_mid,
