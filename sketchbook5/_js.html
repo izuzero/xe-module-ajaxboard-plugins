@@ -2,9 +2,13 @@
 {@
 	$show_message = $plugin_info->extra_vars['show_message']->value;
 	$slide_duration = $plugin_info->extra_vars['slide_duration']->value;
+	$list_style = $mi->default_style;
 }
 <!--@if(!$slide_duration)-->
 	{@$slide_duration = 1000}
+<!--@end-->
+<!--@if(!$list_style)-->
+	{@$list_style = 'list'}
 <!--@end-->
 <script>
 //<![CDATA[
@@ -12,5 +16,6 @@
 var show_waiting_message = {$show_message};
 <!--@end-->
 var SLIDE_DURATION = {$slide_duration};
+var LIST_STYLE = "{$list_style}";
 //]]>
 </script>

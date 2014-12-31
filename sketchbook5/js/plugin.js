@@ -15,14 +15,13 @@
 			$(".fdb_lst_ul").append($("#cmt_alert").show());
 			return false;
 		}
-		var handler = getPage(args);
-			handler.done(function (response, status, xhr) {
-				var $obj = $("<div>").append($.parseHTML(response)).find("#cmtPosition");
-				$(".cmt_editor").append($("#re_cmt").hide());
-				$("body").append($("#cmt_alert").hide());
-				$("#cmtPosition").html($obj.html());
-				board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
-			});
+		var handler = getPage(args).done(function (response, status, xhr) {
+			var $obj = $("<div>").append($.parseHTML(response)).find("#cmtPosition");
+			$(".cmt_editor").append($("#re_cmt").hide());
+			$("body").append($("#cmt_alert").hide());
+			$("#cmtPosition").html($obj.html());
+			board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
+		});
 
 		return handler;
 	}
@@ -39,18 +38,34 @@
 		return handler;
 	}
 	function dispDocumentList(args) {
-		if (!$(".bd_lst_wrp").length) {
+		if (!(LIST_STYLE && $(".bd_lst_wrp").length)) {
 			return false;
 		}
-		var handler = getPage(args);
-			handler.done(function (response, status, xhr) {
-				var $obj = $("<div>").append($.parseHTML(response)).find(".bd_lst_wrp");
-				var $body = $(".bd_lst_wrp");
-				$body.children(".bd_lst").html($obj.children(".bd_lst").html());
-				$body.children(".bd_pg").html($obj.children(".bd_pg").html());
-				$(".cmt_pg").remove();
-				board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
-			});
+		var selector;
+		switch (LIST_STYLE) {
+			case "webzine":
+				selector = "ol.bd_zine";
+				break;
+			case "gallery":
+				selector = "ol.bd_tmb_lst";
+				break;
+			case "cloud_gall":
+				selector = "ul.bd_cloud";
+				break;
+			case "faq":
+				selector = "ul.bd_faq";
+				break;
+			default:
+				selector = "table.bd_tb_lst";
+				break;
+		}
+		var handler = getPage(args).done(function (response, status, xhr) {
+			var $obj = $("<div>").append($.parseHTML(response));
+			$(selector).html($obj.find(selector).html());
+			$(".bd_pg").html($obj.find(".bd_pg").html());
+			$(".cmt_pg").remove();
+			board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
+		});
 
 		return handler;
 	}

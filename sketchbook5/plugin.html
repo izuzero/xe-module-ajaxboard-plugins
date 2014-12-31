@@ -1,4 +1,4 @@
-<block cond="!$act || $act == 'dispBoardContent'">
+<block cond="!in_array($mi->default_style, array('guest', 'blog')) && (!$act || $act == 'dispBoardContent')">
 	<!--// HEADER -->
 	<load target="./lang" />
 	<load target="./css/plugin.css" />
