@@ -11,19 +11,6 @@
 	<colorset />
 	<extra_vars>
 		<group>
-			<title xml:lang="ko">기본</title>
-			<var name="show_message" type="select">
-				<title xml:lang="ko">로딩 메시지</title>
-				<description xml:lang="ko">서버와 통신할 때 화면 상단에 표시되는 메시지 창입니다.</description>
-				<options value="false">
-					<title xml:lang="ko">사용 안 함</title>
-				</options>
-				<options value="true">
-					<title xml:lang="ko">사용함</title>
-				</options>
-			</var>
-		</group>
-		<group>
 			<title xml:lang="ko">시간 설정</title>
 			<var name="slide_duration" type="text">
 				<title xml:lang="ko">댓글 페이징 애니메이션</title>
