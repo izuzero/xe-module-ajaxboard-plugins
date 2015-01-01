@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/*! Copyright (C) 2014 AJAXBOARD. All rights reserved. */
+
+#cmt_alert {
+	display: none;
+	padding: 10px;
+	font-size: 0.75em;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* End of file */

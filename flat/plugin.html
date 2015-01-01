@@ -1,0 +1,9 @@
+<!--// HEADER -->
+<block cond="!$act || $act == 'dispBoardContent'">
+	<load target="./lang" />
+	<load target="./css/plugin.css" />
+	<load target="./js/plugin.js" type="body" />
+
+	<!--// BODY -->
+	<li id="cmt_alert" class="clearfix" onclick="clickCmtAlert()">{$lang->cmd_ajaxboard_comment_alert}</li>
+</block>
