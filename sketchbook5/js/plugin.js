@@ -39,10 +39,11 @@
 	}
 	function dispDocumentList(args) {
 		var handler = getPage(args).done(function (response, status, xhr) {
-			var $obj = $("<div>").append($.parseHTML(response));
-			$(_selector).html($obj.find(_selector).html());
-			$(".bd_pg").html($obj.find(".bd_pg").html());
-			$(".cmt_pg").remove();
+			var $obj = $("<div>").append($.parseHTML(response)).find(".bd .bd_lst_wrp");
+			var $body = $(".bd .bd_lst_wrp");
+			$body.find(_selector).html($obj.find(_selector).html());
+			$body.find(".bd_pg").html($obj.find(".bd_pg").html());
+			$("#cmtPosition .cmt_pg").remove();
 			board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
 		});
 
