@@ -57,7 +57,7 @@
 		return handler;
 	}
 	$(function () {
-		var style = $("[data-default_style]").attr("data-default_style");
+		var style = $(".bd").attr("data-default_style");
 		var match = ["list", "webzine", "gallery", "cloud_gall", "faq"];
 		var selector = ["table.bd_tb_lst", "ol.bd_zine", "ol.bd_tmb_lst", "ul.bd_cloud", "ul.bd_faq"];
 		if (style && $.inArray(style, match) > -1) {
