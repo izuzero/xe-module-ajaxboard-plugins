@@ -39,8 +39,8 @@
 	}
 	function dispDocumentList(args) {
 		var handler = getPage(args).done(function (response, status, xhr) {
-			var $obj = $("<div>").append($.parseHTML(response)).find(".bd .bd_lst_wrp");
-			var $body = $(".bd .bd_lst_wrp");
+			var $obj = $("<div>").append($.parseHTML(response)).find(".bd_lst_wrp");
+			var $body = $(".bd_lst_wrp");
 			$body.find(_selector).html($obj.find(_selector).html());
 			$body.find(".bd_pg").html($obj.find(".bd_pg").html());
 			$("#cmtPosition .cmt_pg").remove();
@@ -57,14 +57,11 @@
 		return handler;
 	}
 	$(function () {
-		var style = $(".bd").attr("data-default_style");
-		var stylelist = ["list", "webzine", "gallery", "cloud_gall", "faq"];
+		var style = $("[data-default_style]").attr("data-default_style");
+		var match = ["list", "webzine", "gallery", "cloud_gall", "faq"];
 		var selector = ["table.bd_tb_lst", "ol.bd_zine", "ol.bd_tmb_lst", "ul.bd_cloud", "ul.bd_faq"];
-		if (!style) {
-			return;
-		}
-		if ($.inArray(style, stylelist) > -1) {
-			_selector = selector[$.inArray(style, stylelist)];
+		if (style && $.inArray(style, match) > -1) {
+			_selector = selector[$.inArray(style, match)];
 		}
 		else {
 			return;
