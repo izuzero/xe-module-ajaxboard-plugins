@@ -7,6 +7,14 @@
 	function getPage(args) {
 		return core.ajax("html", core.current_url, null, null, args);
 	}
+	function rebindHandlers() {
+		$(".simple_wrt").each(function () {
+			var $this = $(this);
+			var val = $this.find("textarea[id*='editor_']").val();
+			$this.parent().children("input[name='content']").val(val);
+		});
+		board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
+	}
 	function dispCommentList(args) {
 		if (!$("#cmtPosition").length) {
 			return false;
@@ -16,11 +24,12 @@
 			return false;
 		}
 		var handler = getPage(args).done(function (response, status, xhr) {
+			$.cookie("socialxe_content", $(".cmt_wrt textarea").val());
 			var $obj = $("<div>").append($.parseHTML(response)).find("#cmtPosition");
 			$(".cmt_editor").append($("#re_cmt").hide());
 			$("body").append($("#cmt_alert").hide());
 			$("#cmtPosition").html($obj.html());
-			board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
+			rebindHandlers();
 		});
 
 		return handler;
@@ -39,12 +48,13 @@
 	}
 	function dispDocumentList(args) {
 		var handler = getPage(args).done(function (response, status, xhr) {
+			$.cookie("socialxe_content", $(".cmt_wrt textarea").val());
 			var $obj = $("<div>").append($.parseHTML(response)).find(".bd_lst_wrp");
 			var $body = $(".bd_lst_wrp");
 			$body.find(_selector).html($obj.find(_selector).html());
 			$body.find(".bd_pg").html($obj.find(".bd_pg").html());
 			$("#cmtPosition .cmt_pg").remove();
-			board("#bd_" + core.module_srl + "_" + (core.document_srl || 0));
+			rebindHandlers();
 		});
 
 		return handler;
